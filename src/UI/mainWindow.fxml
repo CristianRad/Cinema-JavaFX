@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Button?>
+
+
+<HBox fx:controller="UI.MainController" xmlns:fx="http://javafx.com/fxml/1" alignment="center">
+    <VBox>
+        <TableView fx:id="tblFilms" editable="true">
+            <columns>
+                <TableColumn fx:id="colFilmId" text="ID">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="id"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="colFilmTitle" text="Title">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="title"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="colFilmYear" text="Release Year">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="year"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="colFilmPrice" text="Ticket Price">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="ticketPrice"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn fx:id="colFilmOnScreen" text="On Screen">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="onScreen"/>
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+        </TableView>
+        <TextField fx:id="txtFilmId" promptText="ID"/>
+        <TextField fx:id="txtFilmTitle" promptText="Title"/>
+        <TextField fx:id="txtFilmYear" promptText="Year of Release"/>
+        <TextField fx:id="txtFilmPrice" promptText="Ticket Price"/>
+        <CheckBox fx:id="chkOnScreen" text="On Screen"/>
+        <HBox>
+            <Button fx:id="btnAddFilm" text="Add Film" onAction="#btnAddFilmClick"/>
+            <Button fx:id="btnUpdateFilm" text="Update Film" onAction="#btnUpdateFilmClick"/>
+            <Button fx:id="btnRemoveFilm" text="Remove Film" onAction="#btnRemoveFilmClick"/>
+        </HBox>
+    </VBox>
+</HBox>
