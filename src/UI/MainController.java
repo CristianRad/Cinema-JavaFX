@@ -200,7 +200,23 @@ public class MainController {
     }
 
     public void btnTextSearchClick(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("Search.fxml"));
 
+            Scene scene = new Scene(fxmlLoader.load(),1400,900);
+            Stage stage = new Stage();
+            stage.setTitle("Full Text Search");
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            SearchController controller = fxmlLoader.getController();
+            controller.setService(filmService, clientService, reservationService);
+            stage.showAndWait();
+
+        } catch (IOException error) {
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.log(Level.SEVERE, "Failed to create new window: Full Text Search", error);
+        }
     }
 
     public void btnReservationFilterClick(ActionEvent actionEvent) {
