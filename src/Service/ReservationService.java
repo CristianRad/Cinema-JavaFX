@@ -39,15 +39,16 @@ public class ReservationService {
      */
 
     public void addReservation(String id, String idFilm, String idCardClient, LocalDate date, LocalTime time) {
+        Reservation reservation = new Reservation(id, idFilm, idCardClient, date, time);
+        if (reservationRepository.getStorage().containsKey(id))
+            throw new ReservationServiceException(String.format("A reservation with the ID %s already exists!", id));
+
         Film bookedFilm = filmRepository.findById(idFilm);
         if (bookedFilm == null)
             throw new ReservationServiceException(String.format("There is no film with the ID %s!", idFilm));
         if (!bookedFilm.isOnScreen())
             throw new ReservationServiceException("The film is not scheduled to run!");
 
-        Reservation reservation = new Reservation(id, idFilm, idCardClient, date, time);
-        if (reservationRepository.getStorage().containsKey(id))
-            throw new ReservationServiceException(String.format("A reservation with the ID %s already exists!", id));
         reservationRepository.insert(reservation);
 
         Client cardClient = clientRepository.findById(idCardClient);

@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class Main extends Application {
 
@@ -48,6 +49,18 @@ public class Main extends Application {
         clientService.addClient("14","Maria","Goga","2820423126207", LocalDate.of(1982,4,23), LocalDate.of(2008,11,3), 68);
         clientService.addClient("19","Georgiana","Moga","2890531124935", LocalDate.of(1989,5,31), LocalDate.of(2012,3,18), 53);
         clientService.addClient("20","Mihai","Dita","1940930126190", LocalDate.of(1994,9,30), LocalDate.of(2012,2,29), 22);
+
+        reservationService.addReservation("1","1","6", LocalDate.of(2018,9,18), LocalTime.of(21,0));
+        reservationService.addReservation("2","4","6", LocalDate.of(2018,10,3), LocalTime.of(18,30));
+        reservationService.addReservation("3","2","5", LocalDate.of(2018,4,7), LocalTime.of(15,45));
+        reservationService.addReservation("4","2","20", LocalDate.of(2018,6,26), LocalTime.of(17,0));
+        reservationService.addReservation("5","1","14", LocalDate.of(2018,2,14), LocalTime.of(20,20));
+        reservationService.addReservation("7","6","9", LocalDate.of(2019,1,15), LocalTime.of(16,40));
+        reservationService.addReservation("9","2","19", LocalDate.of(2018,9,23), LocalTime.of(21,0));
+        reservationService.addReservation("10","1","7", LocalDate.of(2018,11,30), LocalTime.of(23,15));
+        reservationService.addReservation("12","2","20", LocalDate.of(2018,8,17), LocalTime.of(22,30));
+        reservationService.addReservation("13","1","1", LocalDate.of(2018,9,18), LocalTime.of(21,0));
+        reservationService.addReservation("14","4","3", LocalDate.of(2019,1,28), LocalTime.of(18,50));
 
         MainController mainController = fxmlLoader.getController();
         mainController.setServices(filmService, clientService, reservationService);

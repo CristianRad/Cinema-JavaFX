@@ -2,6 +2,7 @@ package UI;
 
 import Domain.Client;
 import Domain.Film;
+import Domain.Reservation;
 import Service.ClientService;
 import Service.FilmService;
 import Service.ReservationService;
@@ -36,6 +37,12 @@ public class MainController {
     public TableColumn colClientBirthday;
     public TableColumn colClientRegistrationDay;
     public TableColumn colClientPoints;
+    public TableView tblReservations;
+    public TableColumn colReservationId;
+    public TableColumn colReservationFilmId;
+    public TableColumn colReservationClientId;
+    public TableColumn colReservationDate;
+    public TableColumn colReservationTime;
 
     private FilmService filmService;
     private ClientService clientService;
@@ -43,6 +50,7 @@ public class MainController {
 
     private ObservableList<Film> films = FXCollections.observableArrayList();
     private ObservableList<Client> clients = FXCollections.observableArrayList();
+    private ObservableList<Reservation> reservations = FXCollections.observableArrayList();
 
     public void setServices(FilmService filmService, ClientService clientService, ReservationService reservationService) {
         this.filmService = filmService;
@@ -57,6 +65,8 @@ public class MainController {
             tblFilms.setItems(films);
             clients.addAll(clientService.getAllClients());
             tblClients.setItems(clients);
+            reservations.addAll(reservationService.getAllReservations());
+            tblReservations.setItems(reservations);
         });
     }
 
@@ -144,6 +154,73 @@ public class MainController {
             } catch (MainControllerException error) {
                 Common.showValidationError(error.getMessage());
             }
+    }
+
+    public void upsertReservationSettings(FXMLLoader fxmlLoader, String title) {
+        try {
+            Scene scene = new Scene(fxmlLoader.load(),270,250);
+            Stage stage = new Stage();
+            stage.setTitle(title);
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            ReservationAddController controller = fxmlLoader.getController();
+            controller.setService(reservationService);
+            stage.showAndWait();
+
+            reservations.clear();
+            reservations.addAll(reservationService.getAllReservations());
+        } catch (IOException error) {
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.log(Level.SEVERE, "Failed to create new window: Reservation Add/Update", error);
+        }
+    }
+
+    public void btnAddReservationClick(ActionEvent actionEvent) {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("reservationAdd.fxml"));
+        upsertReservationSettings(fxmlLoader,"Reservation Add");
+    }
+
+    public void btnUpdateReservationClick(ActionEvent actionEvent) {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("reservationUpdate.fxml"));
+        upsertReservationSettings(fxmlLoader,"Reservation Update");
+    }
+
+    public void btnRemoveReservationClick(ActionEvent actionEvent) {
+        Reservation selected = (Reservation) tblReservations.getSelectionModel().getSelectedItem();
+        if (selected != null)
+            try {
+                reservationService.removeReservation(selected.getId());
+                reservations.clear();
+                reservations.addAll(reservationService.getAllReservations());
+            } catch (MainControllerException error) {
+                Common.showValidationError(error.getMessage());
+            }
+    }
+
+    public void btnTextSearchClick(ActionEvent actionEvent) {
+
+    }
+
+    public void btnReservationFilterClick(ActionEvent actionEvent) {
+
+    }
+
+    public void btnFilmSortClick(ActionEvent actionEvent) {
+
+    }
+
+    public void btnClientSortClick(ActionEvent actionEvent) {
+
+    }
+
+    public void btnReservationRemoveFilterClick(ActionEvent actionEvent) {
+
+    }
+
+    public void btnClientBonusPoints(ActionEvent actionEvent) {
+
     }
 
 }
