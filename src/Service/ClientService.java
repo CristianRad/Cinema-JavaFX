@@ -96,4 +96,17 @@ public class ClientService {
 
     public IRepository<Client> getClientRepository() { return clientRepository; }
 
+    /**
+     * Adds bonus points to clients whose dates of birth fall in a given date interval.
+     * @param start is the lower boundary of the date interval.
+     * @param end is the upper boundary of the date interval.
+     * @param bonusPoints is the number of bonus points to be added.
+     */
+
+    public void addBonusPoints(LocalDate start, LocalDate end, int bonusPoints) {
+        for (Client client : clientRepository.getAll())
+            if (client.getBirthday().isAfter(start) && client.getBirthday().isBefore(end))
+                client.setPoints(client.getPoints() + bonusPoints);
+    }
+
 }

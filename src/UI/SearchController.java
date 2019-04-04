@@ -58,25 +58,29 @@ public class SearchController {
     }
 
     public void btnSearchClick(ActionEvent actionEvent) {
-        String text = txtSearchText.getText();
-        List<Film> filmResults = filmService.fullTextSearch(text);
-        List<Client> clientResults = clientService.fullTextSearch(text);
-        List<Reservation> reservationResults = reservationService.fullTextSearch(text);
+        try {
+            String text = txtSearchText.getText();
+            List<Film> filmResults = filmService.fullTextSearch(text);
+            List<Client> clientResults = clientService.fullTextSearch(text);
+            List<Reservation> reservationResults = reservationService.fullTextSearch(text);
 
-        films.clear();
-        films.addAll(filmResults);
-        tblFilms.setItems(films);
-        tblFilms.refresh();
+            films.clear();
+            films.addAll(filmResults);
+            tblFilms.setItems(films);
+            tblFilms.refresh();
 
-        clients.clear();
-        clients.addAll(clientResults);
-        tblClients.setItems(clients);
-        tblClients.refresh();
+            clients.clear();
+            clients.addAll(clientResults);
+            tblClients.setItems(clients);
+            tblClients.refresh();
 
-        reservations.clear();
-        reservations.addAll(reservationResults);
-        tblReservations.setItems(reservations);
-        tblReservations.refresh();
+            reservations.clear();
+            reservations.addAll(reservationResults);
+            tblReservations.setItems(reservations);
+            tblReservations.refresh();
+        } catch (RuntimeException error) {
+            Common.showValidationError(error.getMessage());
+        }
     }
 
     public void btnCancelClick(ActionEvent actionEvent) {

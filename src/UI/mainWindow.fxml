@@ -24,29 +24,29 @@
                   </Label>
                   <HBox alignment="CENTER">
                      <children>
-                        <TableView fx:id="tblFilms" editable="true" prefHeight="410.0" prefWidth="600.0">
+                        <TableView fx:id="tblFilms" editable="true" prefHeight="410.0" prefWidth="525.0">
                           <columns>
-                            <TableColumn fx:id="colFilmId" prefWidth="55.0" style="-fx-alignment: CENTER;" text="ID">
+                            <TableColumn fx:id="colFilmId" prefWidth="57.0" style="-fx-alignment: CENTER;" text="ID">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="id" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="colFilmTitle" prefWidth="195.0" style="-fx-alignment: CENTER;" text="Title">
+                            <TableColumn fx:id="colFilmTitle" prefWidth="168.0" style="-fx-alignment: CENTER;" text="Title">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="title" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="colFilmYear" prefWidth="131.0" style="-fx-alignment: CENTER;" text="Release Year">
+                            <TableColumn fx:id="colFilmYear" prefWidth="106.0" style="-fx-alignment: CENTER;" text="Release Year">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="year" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="colFilmPrice" prefWidth="108.0" style="-fx-alignment: CENTER;" text="Ticket Price">
+                            <TableColumn fx:id="colFilmPrice" prefWidth="102.0" style="-fx-alignment: CENTER;" text="Ticket Price">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="ticketPrice" />
                                 </cellValueFactory>
                             </TableColumn>
-                            <TableColumn fx:id="colFilmOnScreen" prefWidth="109.0" style="-fx-alignment: CENTER;" text="On Screen">
+                            <TableColumn fx:id="colFilmOnScreen" prefWidth="90.0" style="-fx-alignment: CENTER;" text="On Screen">
                                 <cellValueFactory>
                                     <PropertyValueFactory property="onScreen" />
                                 </cellValueFactory>
@@ -54,7 +54,7 @@
                           </columns>
                         </TableView>
                      </children></HBox>
-                  <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
+                  <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0" spacing="3.0">
                      <children>
                         <Button onAction="#btnAddFilmClick" text="Add Film" />
                         <Button onAction="#btnUpdateFilmClick" text="Update Film" />
@@ -117,7 +117,7 @@
                         </TableView>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
+                  <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0" spacing="3.0">
                      <children>
                          <Button onAction="#btnAddClientClick" text="Add Client" />
                          <Button onAction="#btnUpdateClientClick" text="Update Client" />
@@ -169,7 +169,7 @@
                         </TableView>
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
+                  <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0" spacing="3.0">
                      <children>
                         <Button onAction="#btnAddReservationClick" text="Add Reservation" />
                         <Button onAction="#btnUpdateReservationClick" text="Update Reservation" />
@@ -183,12 +183,12 @@
          <content>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
                <children>
-                  <Button onAction="#btnTextSearchClick" text="2.4 Full Text Search" prefWidth="175.0"/>
-                  <Button onAction="#btnReservationFilterClick" text="2.5 Reservation Filter" prefWidth="175.0"/>
-                  <Button onAction="#btnFilmSortClick" text="2.6 Film Sort" prefWidth="175.0"/>
-                  <Button onAction="#btnClientSortClick" text="2.7 Client Sort" prefWidth="175.0"/>
-                  <Button onAction="#btnReservationRemoveFilterClick" text="2.8 Reservation Remove Filter" prefWidth="175.0"/>
-                  <Button onAction="#btnClientBonusPoints" text="2.9 Client Bonus Points" prefWidth="175.0"/>
+                  <Button onAction="#btnTextSearchClick" prefWidth="175.0" text="2.4 Full Text Search" />
+                  <Button onAction="#btnReservationFilterClick" prefWidth="175.0" text="2.5 Reservation Filtering" />
+                  <Button onAction="#btnFilmSortClick" prefWidth="175.0" text="2.6 Film Sort by Reservations" />
+                  <Button onAction="#btnClientSortClick" prefWidth="175.0" text="2.7 Client Sort by Card Points" />
+                  <Button onAction="#btnReservationRemoveFilterClick" prefWidth="175.0" text="2.8 Reservation Remove Filter" />
+                  <Button onAction="#btnClientBonusPoints" prefWidth="175.0" text="2.9 Client Bonus Points" />
                </children>
             </VBox>
          </content></Tab>

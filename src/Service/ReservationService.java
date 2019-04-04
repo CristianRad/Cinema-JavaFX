@@ -50,6 +50,7 @@ public class ReservationService {
             throw new ReservationServiceException("The film is not scheduled to run!");
 
         reservationRepository.insert(reservation);
+        filmRepository.findById(idFilm).setReserved(filmRepository.findById(idFilm).getReserved() + 1);
 
         Client cardClient = clientRepository.findById(idCardClient);
         if (cardClient != null)
@@ -106,6 +107,33 @@ public class ReservationService {
                 reservation.getDate().toString().contains(text) || reservation.getTime().toString().contains(text))
                     results.add(reservation);
         return results;
+    }
+
+    /**
+     * Searches for reservations within a given time interval.
+     * @param start is the lower boundary of the time interval.
+     * @param end is the upper boundary of the time interval.
+     * @return a list with reservations that match the given criteria.
+     */
+
+    public List<Reservation> reservationsWithinTimeInterval(LocalTime start, LocalTime end) {
+        List<Reservation> results = new ArrayList<>();
+        for (Reservation reservation : reservationRepository.getAll())
+            if (reservation.getTime().isAfter(start) && reservation.getTime().isBefore(end))
+                results.add(reservation);
+        return results;
+    }
+
+    /**
+     * Removes reservations within a given date interval.
+     * @param start is the lower boundary of the date interval.
+     * @param end is the upper boundary of the date interval.
+     */
+
+    public void removeReservationsWithinDateInterval(LocalDate start, LocalDate end) {
+        for (Reservation reservation : reservationRepository.getAll())
+            if (reservation.getDate().isAfter(start) && reservation.getDate().isBefore(end))
+                reservationRepository.remove(reservation.getId());
     }
 
 }

@@ -220,23 +220,103 @@ public class MainController {
     }
 
     public void btnReservationFilterClick(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("ReservationFilter.fxml"));
 
+            Scene scene = new Scene(fxmlLoader.load(),600,600);
+            Stage stage = new Stage();
+            stage.setTitle("Reservation Filtering");
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            ReservationFilterController controller = fxmlLoader.getController();
+            controller.setService(reservationService);
+            stage.showAndWait();
+
+        } catch (IOException error) {
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.log(Level.SEVERE, "Failed to create new window: Reservation Filtering", error);
+        }
     }
 
     public void btnFilmSortClick(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("FilmSort.fxml"));
 
+            Scene scene = new Scene(fxmlLoader.load(),600,600);
+            Stage stage = new Stage();
+            stage.setTitle("Film Sort by Reservations");
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            FilmSortController controller = fxmlLoader.getController();
+            controller.setService(filmService);
+            stage.showAndWait();
+
+        } catch (IOException error) {
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.log(Level.SEVERE, "Failed to create new window: Film Sort by Reservations", error);
+        }
     }
 
     public void btnClientSortClick(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("ClientSort.fxml"));
 
+            Scene scene = new Scene(fxmlLoader.load(),700,600);
+            Stage stage = new Stage();
+            stage.setTitle("Client Sort by Card Points");
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            ClientSortController controller = fxmlLoader.getController();
+            controller.setService(clientService);
+            stage.showAndWait();
+
+        } catch (IOException error) {
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.log(Level.SEVERE, "Failed to create new window: Client Sort by Card Points", error);
+        }
     }
 
     public void btnReservationRemoveFilterClick(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("ReservationRemoveFilter.fxml"));
 
+            Scene scene = new Scene(fxmlLoader.load(),600,600);
+            Stage stage = new Stage();
+            stage.setTitle("Reservation Remove Filter");
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            ReservationRemoveFilterController controller = fxmlLoader.getController();
+            controller.setService(reservationService);
+            stage.showAndWait();
+
+        } catch (IOException error) {
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.log(Level.SEVERE, "Failed to create new window: Reservation Remove Filter", error);
+        }
     }
 
     public void btnClientBonusPoints(ActionEvent actionEvent) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("ClientBonusPoints.fxml"));
 
+            Scene scene = new Scene(fxmlLoader.load(),700,700);
+            Stage stage = new Stage();
+            stage.setTitle("Client Bonus Points");
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            ClientBonusPointsController controller = fxmlLoader.getController();
+            controller.setService(clientService);
+            stage.showAndWait();
+
+        } catch (IOException error) {
+            Logger logger = Logger.getLogger(getClass().getName());
+            logger.log(Level.SEVERE, "Failed to create new window: Client Bonus Points", error);
+        }
     }
 
 }

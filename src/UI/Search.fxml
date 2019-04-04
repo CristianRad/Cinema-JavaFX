@@ -14,19 +14,19 @@
    <children>
       <Label text="Full Text Search">
          <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="18.0"/>
          </font>
       </Label>
       <VBox alignment="TOP_CENTER" prefHeight="800.0" prefWidth="100.0">
          <children>
-            <Label alignment="CENTER" text="Search Films, Clients, Reservations:" textAlignment="CENTER" textOverrun="CLIP" />
+            <Label alignment="CENTER" text="Search Films, Clients, Reservations:" textAlignment="CENTER" textOverrun="CLIP"/>
             <HBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="200.0" spacing="10.0">
                <children>
-                  <TextField fx:id="txtSearchText" prefWidth="400.0" promptText="Enter text to search..." />
+                  <TextField fx:id="txtSearchText" prefWidth="400.0" promptText="Enter text to search..."/>
                   <HBox prefHeight="50.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="btnSearch" onAction="#btnSearchClick" text="Search" />
-                        <Button fx:id="btnCancel" onAction="#btnCancelClick" text="Cancel" />
+                        <Button fx:id="btnSearch" onAction="#btnSearchClick" text="Search"/>
+                        <Button fx:id="btnCancel" onAction="#btnCancelClick" text="Cancel"/>
                      </children>
                   </HBox>
                </children>
@@ -35,15 +35,15 @@
                <children>
                   <Label text="         Film Results">
                      <font>
-                        <Font name="System Bold" size="16.0" />
+                        <Font name="System Bold" size="16.0"/>
                      </font></Label>
                   <Label layoutX="10.0" layoutY="10.0" text="Client Results">
                      <font>
-                        <Font name="System Bold" size="16.0" />
+                        <Font name="System Bold" size="16.0"/>
                      </font></Label>
                   <Label layoutX="38.0" layoutY="10.0" text="Reservations">
                      <font>
-                        <Font name="System Bold" size="16.0" />
+                        <Font name="System Bold" size="16.0"/>
                      </font></Label>
                </children></HBox>
             <HBox alignment="TOP_CENTER" prefHeight="410.0" prefWidth="200.0" spacing="40.0">
@@ -52,27 +52,27 @@
                     <columns>
                       <TableColumn fx:id="colFilmId" prefWidth="50.0" style="-fx-alignment: CENTER;" text="ID">
                         <cellValueFactory>
-                           <PropertyValueFactory property="id" />
+                           <PropertyValueFactory property="id"/>
                         </cellValueFactory>
                       </TableColumn>
                       <TableColumn fx:id="colFilmTitle" prefWidth="140.0" style="-fx-alignment: CENTER;" text="Title">
                         <cellValueFactory>
-                           <PropertyValueFactory property="title" />
+                           <PropertyValueFactory property="title"/>
                         </cellValueFactory>
                       </TableColumn>
                       <TableColumn fx:id="colFilmYear" prefWidth="70.0" style="-fx-alignment: CENTER;" text="Year">
                         <cellValueFactory>
-                           <PropertyValueFactory property="year" />
+                           <PropertyValueFactory property="year"/>
                         </cellValueFactory>
                       </TableColumn>
                       <TableColumn fx:id="colFilmPrice" prefWidth="70.0" style="-fx-alignment: CENTER;" text="Price">
                       <cellValueFactory>
-                         <PropertyValueFactory property="year" />
+                         <PropertyValueFactory property="year"/>
                       </cellValueFactory>
                       </TableColumn>
                       <TableColumn fx:id="colFilmOnScreen" prefWidth="68.0" style="-fx-alignment: CENTER;" text="On Screen">
                       <cellValueFactory>
-                         <PropertyValueFactory property="onScreen" />
+                         <PropertyValueFactory property="onScreen"/>
                       </cellValueFactory>
                       </TableColumn>
                     </columns>
@@ -81,37 +81,37 @@
                      <columns>
                         <TableColumn fx:id="colClientId" prefWidth="30.0" style="-fx-alignment: CENTER;" text="ID">
                            <cellValueFactory>
-                              <PropertyValueFactory property="id" />
+                              <PropertyValueFactory property="id"/>
                            </cellValueFactory>
                         </TableColumn>
                         <TableColumn fx:id="colClientName" prefWidth="60.0" style="-fx-alignment: CENTER;" text="Name">
                            <cellValueFactory>
-                              <PropertyValueFactory property="name" />
+                              <PropertyValueFactory property="name"/>
                            </cellValueFactory>
                         </TableColumn>
                         <TableColumn fx:id="colClientSurname" prefWidth="90.0" style="-fx-alignment: CENTER;" text="Surname">
                            <cellValueFactory>
-                              <PropertyValueFactory property="surname" />
+                              <PropertyValueFactory property="surname"/>
                            </cellValueFactory>
                         </TableColumn>
                         <TableColumn fx:id="colClientCnp" prefWidth="110.0" style="-fx-alignment: CENTER;" text="CNP">
                            <cellValueFactory>
-                              <PropertyValueFactory property="cnp" />
+                              <PropertyValueFactory property="cnp"/>
                            </cellValueFactory>
                         </TableColumn>
                         <TableColumn fx:id="colClientBirthday" prefWidth="80.0" style="-fx-alignment: CENTER;" text="Birthday">
                            <cellValueFactory>
-                              <PropertyValueFactory property="birthday" />
+                              <PropertyValueFactory property="birthday"/>
                            </cellValueFactory>
                         </TableColumn>
                         <TableColumn fx:id="colClientRegistrationDay" prefWidth="80.0" style="-fx-alignment: CENTER;" text="Reg. Day">
                            <cellValueFactory>
-                              <PropertyValueFactory property="registrationDay" />
+                              <PropertyValueFactory property="registrationDay"/>
                            </cellValueFactory>
                         </TableColumn>
                         <TableColumn fx:id="colClientPoints" prefWidth="48.0" style="-fx-alignment: CENTER;" text="Points">
                            <cellValueFactory>
-                              <PropertyValueFactory property="points" />
+                              <PropertyValueFactory property="points"/>
                            </cellValueFactory>
                         </TableColumn>
                      </columns>
@@ -120,27 +120,27 @@
                      <columns>
                         <TableColumn fx:id="colReservationId" prefWidth="60.0" style="-fx-alignment: CENTER;" text="ID">
                            <cellValueFactory>
-                              <PropertyValueFactory property="id" />
+                              <PropertyValueFactory property="id"/>
                            </cellValueFactory>
                         </TableColumn>
                         <TableColumn fx:id="colReservationFilmId" prefWidth="65.0" style="-fx-alignment: CENTER;" text="Film ID">
                            <cellValueFactory>
-                              <PropertyValueFactory property="idFilm" />
+                              <PropertyValueFactory property="idFilm"/>
                            </cellValueFactory>
                         </TableColumn>
                         <TableColumn fx:id="colReservationClientId" prefWidth="65.0" style="-fx-alignment: CENTER;" text="Client ID">
                            <cellValueFactory>
-                              <PropertyValueFactory property="idCardClient" />
+                              <PropertyValueFactory property="idCardClient"/>
                            </cellValueFactory>
                         </TableColumn>
                         <TableColumn fx:id="colReservationDate" prefWidth="90.0" style="-fx-alignment: CENTER;" text="Date">
                            <cellValueFactory>
-                              <PropertyValueFactory property="date" />
+                              <PropertyValueFactory property="date"/>
                            </cellValueFactory>
                         </TableColumn>
                         <TableColumn fx:id="colReservationTime" prefWidth="68.0" style="-fx-alignment: CENTER;" text="Time">
                            <cellValueFactory>
-                              <PropertyValueFactory property="time" />
+                              <PropertyValueFactory property="time"/>
                            </cellValueFactory>
                         </TableColumn>
                      </columns>

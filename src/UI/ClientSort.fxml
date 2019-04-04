@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ClientSortController">
+   <children>
+      <HBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="200.0">
+         <children>
+            <Label text="Client Sort by Card Points">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox alignment="TOP_CENTER" prefHeight="440.0" prefWidth="650.0">
+          <children>
+              <TableView fx:id="tblClients" editable="true" prefHeight="410.0" prefWidth="650.0">
+                  <columns>
+                      <TableColumn fx:id="colClientId" prefWidth="50.0" style="-fx-alignment: CENTER;" text="ID">
+                          <cellValueFactory>
+                              <PropertyValueFactory property="id" />
+                          </cellValueFactory>
+                      </TableColumn>
+                      <TableColumn fx:id="colClientName" prefWidth="83.0" style="-fx-alignment: CENTER;" text="Name">
+                          <cellValueFactory>
+                              <PropertyValueFactory property="name" />
+                          </cellValueFactory>
+                      </TableColumn>
+                      <TableColumn fx:id="colClientSurname" prefWidth="119.0" style="-fx-alignment: CENTER;" text="Surname">
+                          <cellValueFactory>
+                              <PropertyValueFactory property="surname" />
+                          </cellValueFactory>
+                      </TableColumn>
+                      <TableColumn fx:id="colClientCnp" prefWidth="117.0" style="-fx-alignment: CENTER;" text="CNP">
+                          <cellValueFactory>
+                              <PropertyValueFactory property="cnp" />
+                          </cellValueFactory>
+                      </TableColumn>
+                      <TableColumn fx:id="colClientBirthday" prefWidth="108.0" style="-fx-alignment: CENTER;" text="Day of Birth">
+                          <cellValueFactory>
+                              <PropertyValueFactory property="birthday" />
+                          </cellValueFactory>
+                      </TableColumn>
+                      <TableColumn fx:id="colClientRegistrationDay" prefWidth="121.0" style="-fx-alignment: CENTER;" text="Day of Registration">
+                          <cellValueFactory>
+                              <PropertyValueFactory property="registrationDay" />
+                          </cellValueFactory>
+                      </TableColumn>
+                      <TableColumn fx:id="colClientPoints" prefWidth="50.0" style="-fx-alignment: CENTER;" text="Points">
+                          <cellValueFactory>
+                              <PropertyValueFactory property="points" />
+                          </cellValueFactory>
+                      </TableColumn>
+                  </columns>
+              </TableView>
+          </children>
+      </HBox>
+   </children>
+</VBox>
