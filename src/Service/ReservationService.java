@@ -9,12 +9,15 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class ReservationService {
 
     private IRepository<Reservation> reservationRepository;
     private IRepository<Client> clientRepository;
     private IRepository<Film> filmRepository;
+    private Stack<UndoRedoOperation<Reservation>> undoableOperations = new Stack<>();
+    private Stack<UndoRedoOperation<Reservation>> redoableOperations = new Stack<>();
 
     /**
      * Instantiates a service for reservations.
@@ -50,6 +53,9 @@ public class ReservationService {
             throw new ReservationServiceException("The film is not scheduled to run!");
 
         reservationRepository.insert(reservation);
+        undoableOperations.add(new AddOperation<>(reservationRepository, reservation));
+        redoableOperations.clear();
+
         filmRepository.findById(idFilm).setReserved(filmRepository.findById(idFilm).getReserved() + 1);
 
         Client cardClient = clientRepository.findById(idCardClient);
@@ -71,6 +77,8 @@ public class ReservationService {
         Reservation reservation = new Reservation(id, idFilm, idCardClient, date, time);
         if (!reservationRepository.getStorage().containsKey(id))
             throw new ReservationServiceException(String.format("There is no reservation with the ID %s!", id));
+        undoableOperations.add(new UpdateOperation<>(reservationRepository, reservationRepository.findById(id), reservation));
+        redoableOperations.add(new UpdateOperation<>(reservationRepository, reservation, reservationRepository.findById(id)));
         reservationRepository.update(reservation);
     }
 
@@ -83,6 +91,8 @@ public class ReservationService {
     public void removeReservation(String id) {
         if (!reservationRepository.getStorage().containsKey(id))
             throw new ReservationServiceException(String.format("There is no reservation with the ID %s!", id));
+        undoableOperations.add(new RemoveOperation<>(reservationRepository, reservationRepository.findById(id)));
+        redoableOperations.clear();
         reservationRepository.remove(id);
     }
 
@@ -134,6 +144,22 @@ public class ReservationService {
         for (Reservation reservation : reservationRepository.getAll())
             if (reservation.getDate().isAfter(start) && reservation.getDate().isBefore(end))
                 reservationRepository.remove(reservation.getId());
+    }
+
+    public void undo() {
+        if (!undoableOperations.isEmpty()) {
+            UndoRedoOperation<Reservation> lastOperation = undoableOperations.pop();
+            lastOperation.doUndo();
+            redoableOperations.add(lastOperation);
+        }
+    }
+
+    public void redo() {
+        if (!redoableOperations.isEmpty()) {
+            UndoRedoOperation<Reservation> lastOperation = redoableOperations.pop();
+            lastOperation.doRedo();
+            undoableOperations.add(lastOperation);
+        }
     }
 
 }

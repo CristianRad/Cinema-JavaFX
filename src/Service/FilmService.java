@@ -5,10 +5,13 @@ import Repository.IRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class FilmService {
 
     private IRepository<Film> filmRepository;
+    private Stack<UndoRedoOperation<Film>> undoableOperations = new Stack();
+    private Stack<UndoRedoOperation<Film>> redoableOperations = new Stack();
 
     /**
      * Instantiates a service for films.
@@ -34,6 +37,8 @@ public class FilmService {
         if (filmRepository.getStorage().containsKey(id))
             throw new FilmServiceException(String.format("A film with the ID %s already exists!", id));
         filmRepository.insert(film);
+        undoableOperations.add(new AddOperation<>(filmRepository, film));
+        redoableOperations.clear();
     }
 
     /**
@@ -50,6 +55,8 @@ public class FilmService {
         Film film = new Film(id, title, year, ticketPrice, onScreen);
         if (!filmRepository.getStorage().containsKey(id))
             throw new FilmServiceException(String.format("There is no film with the ID %s!", id));
+        undoableOperations.add(new UpdateOperation<>(filmRepository, filmRepository.findById(id), film));
+        redoableOperations.add(new UpdateOperation<>(filmRepository, film, filmRepository.findById(id)));
         filmRepository.update(film);
     }
 
@@ -62,6 +69,8 @@ public class FilmService {
     public void removeFilm(String id) {
         if (!filmRepository.getStorage().containsKey(id))
             throw new FilmServiceException(String.format("There is no film with the ID %s!", id));
+        undoableOperations.add(new RemoveOperation<>(filmRepository, filmRepository.findById(id)));
+        redoableOperations.clear();
         filmRepository.remove(id);
     }
 
@@ -86,6 +95,22 @@ public class FilmService {
                 Double.toString(film.getTicketPrice()).contains(text) || Boolean.toString(film.isOnScreen()).contains(text))
                     results.add(film);
         return results;
+    }
+
+    public void undo() {
+        if (!undoableOperations.isEmpty()) {
+            UndoRedoOperation<Film> lastOperation = undoableOperations.pop();
+            lastOperation.doUndo();
+            redoableOperations.add(lastOperation);
+        }
+    }
+
+    public void redo() {
+        if (!redoableOperations.isEmpty()) {
+            UndoRedoOperation<Film> lastOperation = redoableOperations.pop();
+            lastOperation.doRedo();
+            undoableOperations.add(lastOperation);
+        }
     }
 
     public IRepository<Film> getFilmRepository() { return filmRepository; }

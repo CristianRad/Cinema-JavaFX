@@ -59,6 +59,8 @@
                         <Button onAction="#btnAddFilmClick" text="Add Film" />
                         <Button onAction="#btnUpdateFilmClick" text="Update Film" />
                         <Button onAction="#btnRemoveFilmClick" text="Remove Film" />
+                        <Button onAction="#btnFilmUndoClick" text="Undo" />
+                        <Button onAction="#btnFilmRedoClick" text="Redo" />
                      </children>
                   </HBox>
                </children>
@@ -122,6 +124,8 @@
                          <Button onAction="#btnAddClientClick" text="Add Client" />
                          <Button onAction="#btnUpdateClientClick" text="Update Client" />
                          <Button onAction="#btnRemoveClientClick" text="Remove Client" />
+                         <Button onAction="#btnClientUndoClick" text="Undo" />
+                         <Button onAction="#btnClientRedoClick" text="Redo" />
                      </children>
                   </HBox>
                </children>
@@ -174,6 +178,8 @@
                         <Button onAction="#btnAddReservationClick" text="Add Reservation" />
                         <Button onAction="#btnUpdateReservationClick" text="Update Reservation" />
                         <Button onAction="#btnRemoveReservationClick" text="Remove Reservation" />
+                        <Button onAction="#btnReservationUndoClick" text="Undo" />
+                        <Button onAction="#btnReservationRedoClick" text="Redo" />
                      </children>
                   </HBox>
                </children>

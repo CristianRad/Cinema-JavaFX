@@ -6,10 +6,13 @@ import Repository.IRepository;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class ClientService {
 
     private IRepository<Client> clientRepository;
+    private Stack<UndoRedoOperation<Client>> undoableOperations = new Stack<>();
+    private Stack<UndoRedoOperation<Client>> redoableOperations = new Stack<>();
 
     /**
      * Instantiates a service for clients.
@@ -37,6 +40,8 @@ public class ClientService {
         if (clientRepository.getStorage().containsKey(id))
             throw new ClientServiceException(String.format("A client with the ID %s already exists!", id));
         clientRepository.insert(client);
+        undoableOperations.add(new AddOperation<>(clientRepository, client));
+        redoableOperations.clear();
     }
 
     /**
@@ -55,6 +60,8 @@ public class ClientService {
         Client client = new Client(id, name, surname, cnp, birthday, registrationDay, points);
         if (!clientRepository.getStorage().containsKey(id))
             throw new ClientServiceException(String.format("There is no client with the ID %s!", id));
+        undoableOperations.add(new UpdateOperation<>(clientRepository, clientRepository.findById(id), client));
+        redoableOperations.add(new UpdateOperation<>(clientRepository, client, clientRepository.findById(id)));
         clientRepository.update(client);
     }
 
@@ -67,6 +74,8 @@ public class ClientService {
     public void removeClient(String id) {
         if (!clientRepository.getStorage().containsKey(id))
             throw new ClientServiceException(String.format("There is no client with the ID %s!", id));
+        undoableOperations.add(new RemoveOperation<>(clientRepository, clientRepository.findById(id)));
+        redoableOperations.clear();
         clientRepository.remove(id);
     }
 
@@ -107,6 +116,22 @@ public class ClientService {
         for (Client client : clientRepository.getAll())
             if (client.getBirthday().isAfter(start) && client.getBirthday().isBefore(end))
                 client.setPoints(client.getPoints() + bonusPoints);
+    }
+
+    public void undo() {
+        if (!undoableOperations.isEmpty()) {
+            UndoRedoOperation<Client> lastOperation = undoableOperations.pop();
+            lastOperation.doUndo();
+            redoableOperations.add(lastOperation);
+        }
+    }
+
+    public void redo() {
+        if (!redoableOperations.isEmpty()) {
+            UndoRedoOperation<Client> lastOperation = redoableOperations.pop();
+            lastOperation.doRedo();
+            undoableOperations.add(lastOperation);
+        }
     }
 
 }

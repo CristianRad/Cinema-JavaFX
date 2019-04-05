@@ -319,4 +319,40 @@ public class MainController {
         }
     }
 
+    public void btnFilmUndoClick(ActionEvent actionEvent) {
+        filmService.undo();
+        films.clear();
+        films.addAll(filmService.getAllFilms());
+    }
+
+    public void btnFilmRedoClick(ActionEvent actionEvent) {
+        filmService.redo();
+        films.clear();
+        films.addAll(filmService.getAllFilms());
+    }
+
+    public void btnClientUndoClick(ActionEvent actionEvent) {
+        clientService.undo();
+        clients.clear();
+        clients.addAll(clientService.getAllClients());
+    }
+
+    public void btnClientRedoClick(ActionEvent actionEvent) {
+        clientService.redo();
+        clients.clear();
+        clients.addAll(clientService.getAllClients());
+    }
+
+    public void btnReservationUndoClick(ActionEvent actionEvent) {
+        reservationService.undo();
+        reservations.clear();
+        reservations.addAll(reservationService.getAllReservations());
+    }
+
+    public void btnReservationRedoClick(ActionEvent actionEvent) {
+        reservationService.redo();
+        reservations.clear();
+        reservations.addAll(reservationService.getAllReservations());
+    }
+
 }
