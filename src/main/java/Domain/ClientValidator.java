@@ -2,6 +2,8 @@ package Domain;
 
 import java.util.Calendar;
 
+import static Domain.PalindromeValidator.isPalindrome;
+
 public class ClientValidator implements IValidator<Client> {
 
     /** Validates a reservation.
@@ -12,19 +14,11 @@ public class ClientValidator implements IValidator<Client> {
     public void validate(Client client) {
         String errors = "";
 
-        /*int id = Integer.parseInt(client.getId());
-        int dumy = id;
-        int reversedId = 0;
-        while (dumy != 0) {
-            reversedId = reversedId * 10 + dumy % 10;
-            dumy /= 10;
-        }
-
-        if (id != reversedId)
-            errors += "The ID is not palindrome!\n";*/
+        if (isPalindrome(client.getId()))
+            errors += String.format("The client's ID (%s) is a palindrome number!\n", client.getId());
 
         if (client.getCnp().length() != 13)
-            throw new ClientValidatorException("The CNP must have exactly 13 digits!\n");
+            errors += "The CNP must be exactly 13 digits!\n";
 
         if (client.getBirthday().getYear() < 1920 || client.getBirthday().getYear() > Calendar.getInstance().get(Calendar.YEAR))
             errors += "The year of birth must be between 1920 and " + Calendar.getInstance().get(Calendar.YEAR) + "!\n";

@@ -114,15 +114,16 @@ public class ClientService {
 
     public void addBonusPoints(LocalDate start, LocalDate end, int bonusPoints) {
         List<Client> currentClientCards = new ArrayList<>();
-        List<Client> updatedClientCards = new ArrayList<>();
+        List<Client> updatedClientCards;
 
         for (Client client : clientRepository.getAll())
             if (client.getBirthday().isAfter(start) && client.getBirthday().isBefore(end)) {
                 Client current = new Client(client.getId(), client.getName(), client.getSurname(), client.getCnp(), client.getBirthday(), client.getRegistrationDay(), client.getPoints());
                 currentClientCards.add(current);
                 client.setPoints(client.getPoints() + bonusPoints);
-                updatedClientCards.add(client);
+                clientRepository.update(client);
             }
+        updatedClientCards = clientRepository.getAll();
         undoableOperations.add(new ClientPointsUpdateOperation<>(clientRepository, currentClientCards, updatedClientCards));
         redoableOperations.clear();
     }

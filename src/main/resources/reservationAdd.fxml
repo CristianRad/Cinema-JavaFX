@@ -9,36 +9,36 @@
 
 <VBox alignment="CENTER" prefHeight="250.0" prefWidth="270.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ReservationAddController">
    <children>
-      <Spinner fx:id="spnId" editable="true" initialValue="0" max="2000000000" min="0"/>
-      <TextField fx:id="txtFilmId" promptText="Film ID"/>
-      <TextField fx:id="txtClientId" promptText="Client ID"/>
+      <Spinner fx:id="spnId" editable="true" initialValue="0" max="2000000000" min="0" />
+      <TextField fx:id="txtFilmId" promptText="Film ID" />
+      <TextField fx:id="txtClientId" promptText="Client ID" />
       <VBox alignment="CENTER" prefHeight="30.0" prefWidth="100.0">
          <children>
-            <Label text="Date of Reservation:"/>
+            <Label text="Date of Reservation:" />
          </children>
       </VBox>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
-            <TextField fx:id="txtDayOfReservation" promptText="Day"/>
-            <TextField fx:id="txtMonthOfReservation" promptText="Month"/>
-            <TextField fx:id="txtYearOfReservation" promptText="Year"/>
+            <TextField fx:id="txtDayOfReservation" promptText="Day" />
+            <TextField fx:id="txtMonthOfReservation" promptText="Month" />
+            <TextField fx:id="txtYearOfReservation" promptText="Year" />
          </children>
       </HBox>
       <VBox alignment="CENTER" prefHeight="30.0" prefWidth="100.0">
          <children>
-            <Label text="Time of Reservation:"/>
+            <Label text="Time of Reservation:" />
          </children>
       </VBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <TextField fx:id="txtHour" maxWidth="60.0" promptText="Hour"/>
-            <TextField fx:id="txtMinutes" maxWidth="60.0" promptText="Minutes"/>
+            <TextField fx:id="txtHour" alignment="CENTER" maxWidth="60.0" promptText="Hour" />
+            <TextField fx:id="txtMinutes" alignment="CENTER" maxWidth="60.0" promptText="Minutes" />
          </children>
       </HBox>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="5.0">
          <children>
-            <Button fx:id="btnAdd" onAction="#btnAddClick" text="Add"/>
-            <Button fx:id="btnCancel" onAction="#btnCancelClick" text="Cancel"/>
+            <Button fx:id="btnAdd" onAction="#btnAddClick" text="Add" />
+            <Button fx:id="btnCancel" onAction="#btnCancelClick" text="Cancel" />
          </children>
       </VBox>
    </children>

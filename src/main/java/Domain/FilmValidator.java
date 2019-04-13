@@ -2,6 +2,8 @@ package Domain;
 
 import java.util.Calendar;
 
+import static Domain.PalindromeValidator.isPalindrome;
+
 public class FilmValidator implements IValidator<Film> {
 
     /** Validates a film.
@@ -12,16 +14,8 @@ public class FilmValidator implements IValidator<Film> {
     public void validate (Film film) {
         String errors = "";
 
-        int id = Integer.parseInt(film.getId());
-        int dumy = id;
-        int reversedId = 0;
-        while (dumy != 0) {
-            reversedId = reversedId * 10 + dumy % 10;
-            dumy /= 10;
-        }
-
-        if (id != reversedId)
-            errors += "The ID is not palindrome!\n";
+        if (isPalindrome(film.getId()))
+            errors += String.format("The film's ID (%s) is a palindrome number!\n", film.getId());
 
         if (film.getTicketPrice() <= 0)
             errors += "Ticket price must be greater than 0!\n";
