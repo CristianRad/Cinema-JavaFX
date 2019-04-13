@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.ClientBonusPointsController">
+   <children>
+      <Label text="Client Bonus Points">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0" spacing="5.0">
+         <children>
+            <Label text="Bonus Points Interval - Between" />
+            <HBox alignment="CENTER" prefHeight="70.0" prefWidth="155.0">
+               <children>
+                  <TextField fx:id="txtStartDay" prefWidth="45.0" promptText="Day" />
+                  <TextField fx:id="txtStartMonth" prefWidth="60.0" promptText="Month" />
+                  <TextField fx:id="txtStartYear" prefWidth="50.0" promptText="Year" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="65.0" prefWidth="25.0">
+               <children>
+                  <Label text="and" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="65.0" prefWidth="155.0">
+               <children>
+                  <TextField fx:id="txtEndDay" prefWidth="45.0" promptText="Day" />
+                  <TextField fx:id="txtEndMonth" prefWidth="60.0" promptText="Month" />
+                  <TextField fx:id="txtEndYear" prefWidth="50.0" promptText="Year" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0" spacing="5.0">
+         <children>
+            <Label text="Bonus Points:" />
+            <HBox alignment="CENTER" prefHeight="65.0" prefWidth="100.0">
+               <children>
+                  <TextField fx:id="txtBonusPoints" promptText="Enter a value" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0" spacing="3.0">
+               <children>
+                  <Button fx:id="btnApplyPoints" onAction="#btnApplyPointsClick" text="Apply Bonus Points" />
+                  <Button fx:id="btnCancel" onAction="#btnCancelClick" text="Cancel" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="440.0" prefWidth="650.0">
+         <children>
+            <TableView fx:id="tblClients" editable="true" prefHeight="410.0" prefWidth="650.0">
+               <columns>
+                  <TableColumn fx:id="colClientId" prefWidth="50.0" style="-fx-alignment: CENTER;" text="ID">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="id" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="colClientName" prefWidth="83.0" style="-fx-alignment: CENTER;" text="Name">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="name" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="colClientSurname" prefWidth="119.0" style="-fx-alignment: CENTER;" text="Surname">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="surname" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="colClientCnp" prefWidth="117.0" style="-fx-alignment: CENTER;" text="CNP">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="cnp" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="colClientBirthday" prefWidth="108.0" style="-fx-alignment: CENTER;" text="Day of Birth">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="birthday" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="colClientRegistrationDay" prefWidth="121.0" style="-fx-alignment: CENTER;" text="Day of Registration">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="registrationDay" />
+                     </cellValueFactory>
+                  </TableColumn>
+                  <TableColumn fx:id="colClientPoints" prefWidth="50.0" style="-fx-alignment: CENTER;" text="Points">
+                     <cellValueFactory>
+                        <PropertyValueFactory property="points" />
+                     </cellValueFactory>
+                  </TableColumn>
+               </columns>
+            </TableView>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0" spacing="3.0">
+         <children>
+            <Button fx:id="btnUndo" onAction="#btnUndoApplyBonusPoints" text="Undo" />
+            <Button fx:id="btnRedo" onAction="#btnRedoApplyBonusPoints" text="Redo" />
+         </children>
+      </HBox>
+   </children>
+</VBox>
