@@ -30,10 +30,10 @@ public class Main extends Application {
         IRepository<Client> clientRepository = new JsonFileRepository<>(clientValidator,"clients.json", Client.class);
         IRepository<Reservation> reservationRepository = new JsonFileRepository<>(reservationValidator,"reservations.json", Reservation.class);
 
-        FilmService filmService = new FilmService(filmRepository);
+        FilmService filmService = new FilmService(filmRepository, reservationRepository);
         ClientService clientService = new ClientService(clientRepository);
         ReservationService reservationService = new ReservationService(reservationRepository, clientRepository, filmRepository);
-
+/*
         filmService.addFilm("1","Titanic",1999,20.0,true);
         filmService.addFilm("2","Lord Of The Rings",2002,45.0,true);
         filmService.addFilm("3","The Mechanic",2005,34.0,false);
@@ -61,7 +61,7 @@ public class Main extends Application {
         reservationService.addReservation("12","2","20", LocalDate.of(2018,8,17), LocalTime.of(22,30));
         reservationService.addReservation("13","1","1", LocalDate.of(2018,9,18), LocalTime.of(21,0));
         reservationService.addReservation("14","4","3", LocalDate.of(2019,1,28), LocalTime.of(18,50));
-
+*/
         MainController mainController = fxmlLoader.getController();
         mainController.setServices(filmService, clientService, reservationService);
 

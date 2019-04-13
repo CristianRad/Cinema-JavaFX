@@ -202,7 +202,7 @@ public class MainController {
     public void btnTextSearchClick(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/Search.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/search.fxml"));
 
             Scene scene = new Scene(fxmlLoader.load(),1400,900);
             Stage stage = new Stage();
@@ -222,7 +222,7 @@ public class MainController {
     public void btnReservationFilterClick(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/ReservationFilter.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/reservationFilter.fxml"));
 
             Scene scene = new Scene(fxmlLoader.load(),600,600);
             Stage stage = new Stage();
@@ -242,7 +242,7 @@ public class MainController {
     public void btnFilmSortClick(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/FilmSort.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/filmSort.fxml"));
 
             Scene scene = new Scene(fxmlLoader.load(),600,600);
             Stage stage = new Stage();
@@ -262,7 +262,7 @@ public class MainController {
     public void btnClientSortClick(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/ClientSort.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/clientSort.fxml"));
 
             Scene scene = new Scene(fxmlLoader.load(),700,600);
             Stage stage = new Stage();
@@ -282,7 +282,7 @@ public class MainController {
     public void btnReservationRemoveFilterClick(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/ReservationRemoveFilter.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/reservationRemoveFilter.fxml"));
 
             Scene scene = new Scene(fxmlLoader.load(),600,600);
             Stage stage = new Stage();
@@ -302,7 +302,7 @@ public class MainController {
     public void btnClientBonusPoints(ActionEvent actionEvent) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
-            fxmlLoader.setLocation(getClass().getResource("/ClientBonusPoints.fxml"));
+            fxmlLoader.setLocation(getClass().getResource("/clientBonusPoints.fxml"));
 
             Scene scene = new Scene(fxmlLoader.load(),700,700);
             Stage stage = new Stage();

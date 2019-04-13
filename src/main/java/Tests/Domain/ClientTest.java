@@ -32,10 +32,10 @@ public class ClientTest {
         assertEquals("2940505124935", clientService.getAllClients().get(0).getCnp());
 
         clientService.getAllClients().get(0).setBirthday(LocalDate.of(1994,5,5));
-        assertEquals("05.05.1994", clientService.getAllClients().get(0).getBirthday());
+        assertEquals(LocalDate.of(1994,5,5), clientService.getAllClients().get(0).getBirthday());
 
         clientService.getAllClients().get(0).setRegistrationDay(LocalDate.of(2015,10,10));
-        assertEquals("10.10.2015", clientService.getAllClients().get(0).getRegistrationDay());
+        assertEquals(LocalDate.of(2015,10,10), clientService.getAllClients().get(0).getRegistrationDay());
 
         clientService.getAllClients().get(0).setPoints(70);
         assertEquals(70, clientService.getAllClients().get(0).getPoints());

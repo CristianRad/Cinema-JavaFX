@@ -97,9 +97,9 @@ public class ClientService {
         List<Client> results = new ArrayList<>();
         for (Client client : getAllClients())
             if (client.getName().contains(text) || client.getSurname().contains(text) || client.getCnp().contains(text) ||
-                client.getBirthday().toString().contains(text) || client.getRegistrationDay().toString().contains(text) ||
-                Integer.toString(client.getPoints()).contains(text))
-                    results.add(client);
+                    client.getBirthday().toString().contains(text) || client.getRegistrationDay().toString().contains(text) ||
+                    Integer.toString(client.getPoints()).contains(text))
+                results.add(client);
         return results;
     }
 

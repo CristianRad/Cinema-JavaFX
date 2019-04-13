@@ -27,6 +27,9 @@ public class JsonFileRepository<T extends Entity> implements IRepository<T> {
         try (FileReader in = new FileReader(filename)) {
             try (BufferedReader bufferedReader = new BufferedReader(in)) {
                 //String contents = gson.fromJson(bufferedReader.readLine(), Collection<type>);
+                //T[] entities = gson.fromJson(bufferedReader, type);
+                //for (T entity: entities)
+                    //storage.put(entity.getId(), entity);
                 String line;
                 while ((line = bufferedReader.readLine()) != null) {
                     T entity = gson.fromJson(line, type);

@@ -22,9 +22,9 @@
             <Label text="Bonus Points Interval - Between" />
             <HBox alignment="CENTER" prefHeight="70.0" prefWidth="155.0">
                <children>
-                  <TextField fx:id="txtStartDay" prefWidth="45.0" promptText="Day" />
-                  <TextField fx:id="txtStartMonth" prefWidth="60.0" promptText="Month" />
-                  <TextField fx:id="txtStartYear" prefWidth="50.0" promptText="Year" />
+                  <TextField fx:id="txtStartDay" alignment="CENTER" prefWidth="45.0" promptText="Day" />
+                  <TextField fx:id="txtStartMonth" alignment="CENTER" prefWidth="50.0" promptText="Month" />
+                  <TextField fx:id="txtStartYear" alignment="CENTER" prefWidth="50.0" promptText="Year" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="65.0" prefWidth="25.0">
@@ -34,9 +34,9 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="65.0" prefWidth="155.0">
                <children>
-                  <TextField fx:id="txtEndDay" prefWidth="45.0" promptText="Day" />
-                  <TextField fx:id="txtEndMonth" prefWidth="60.0" promptText="Month" />
-                  <TextField fx:id="txtEndYear" prefWidth="50.0" promptText="Year" />
+                  <TextField fx:id="txtEndDay" alignment="CENTER" prefWidth="45.0" promptText="Day" />
+                  <TextField fx:id="txtEndMonth" alignment="CENTER" prefWidth="50.0" promptText="Month" />
+                  <TextField fx:id="txtEndYear" alignment="CENTER" prefWidth="50.0" promptText="Year" />
                </children>
             </HBox>
          </children>
@@ -46,7 +46,7 @@
             <Label text="Bonus Points:" />
             <HBox alignment="CENTER" prefHeight="65.0" prefWidth="100.0">
                <children>
-                  <TextField fx:id="txtBonusPoints" promptText="Enter a value" />
+                  <TextField fx:id="txtBonusPoints" alignment="CENTER" promptText="Enter a value" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0" spacing="3.0">
@@ -57,9 +57,9 @@
             </HBox>
          </children>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="440.0" prefWidth="650.0">
+      <HBox alignment="CENTER" prefHeight="434.0" prefWidth="650.0">
          <children>
-            <TableView fx:id="tblClients" editable="true" prefHeight="410.0" prefWidth="650.0">
+            <TableView fx:id="tblClients" editable="true" prefHeight="434.0" prefWidth="650.0">
                <columns>
                   <TableColumn fx:id="colClientId" prefWidth="50.0" style="-fx-alignment: CENTER;" text="ID">
                      <cellValueFactory>

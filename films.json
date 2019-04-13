@@ -1,6 +1,6 @@
-{"title":"Titanic","year":1999,"ticketPrice":20.0,"onScreen":true,"reserved":0,"id":"1"}
-{"title":"Lord Of The Rings","year":2002,"ticketPrice":45.0,"onScreen":true,"reserved":0,"id":"2"}
-{"title":"The Mechanic","year":2005,"ticketPrice":34.0,"onScreen":false,"reserved":0,"id":"3"}
-{"title":"Mr. Bean","year":2002,"ticketPrice":41.0,"onScreen":true,"reserved":0,"id":"4"}
-{"title":"Matrix","year":2003,"ticketPrice":29.0,"onScreen":false,"reserved":0,"id":"5"}
-{"title":"Armageddon","year":1998,"ticketPrice":50.0,"onScreen":true,"reserved":0,"id":"6"}
+{"title":"Titanic","year":1999,"ticketPrice":20.0,"onScreen":true,"id":"1"}
+{"title":"Lord Of The Rings","year":2002,"ticketPrice":45.0,"onScreen":true,"id":"2"}
+{"title":"The Mechanic","year":2005,"ticketPrice":34.0,"onScreen":false,"id":"3"}
+{"title":"Mr. Bean","year":2002,"ticketPrice":41.0,"onScreen":true,"id":"4"}
+{"title":"Matrix","year":2003,"ticketPrice":29.0,"onScreen":false,"id":"5"}
+{"title":"Armageddon","year":1998,"ticketPrice":50.0,"onScreen":true,"id":"6"}

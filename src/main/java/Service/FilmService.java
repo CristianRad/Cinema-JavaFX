@@ -1,15 +1,15 @@
 package Service;
 
 import Domain.Film;
+import Domain.Reservation;
 import Repository.IRepository;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class FilmService {
 
     private IRepository<Film> filmRepository;
+    private IRepository<Reservation> reservationRepository;
     private Stack<UndoRedoOperation<Film>> undoableOperations = new Stack();
     private Stack<UndoRedoOperation<Film>> redoableOperations = new Stack();
 
@@ -18,8 +18,9 @@ public class FilmService {
      * @param filmRepository is the repository used.
      */
 
-    public FilmService(IRepository<Film> filmRepository) {
+    public FilmService(IRepository<Film> filmRepository, IRepository<Reservation> reservationRepository) {
         this.filmRepository = filmRepository;
+        this.reservationRepository = reservationRepository;
     }
 
     /**
@@ -91,9 +92,28 @@ public class FilmService {
     public List<Film> fullTextSearch(String text) {
         List<Film> results = new ArrayList<>();
         for (Film film : getAllFilms())
-            if (film.getTitle().contains(text) || Integer.toString(film.getYear()).contains(text) ||
-                Double.toString(film.getTicketPrice()).contains(text) || Boolean.toString(film.isOnScreen()).contains(text))
+            if (film.getTitle().toLowerCase().contains(text.toLowerCase()) || Integer.toString(film.getYear()).contains(text) ||
+                Double.toString(film.getTicketPrice()).contains(text) || Boolean.toString(film.isOnScreen()).toLowerCase().contains(text.toLowerCase()))
                     results.add(film);
+        return results;
+    }
+
+    public List<FilmReservationVM> getOrderedByReservations() {
+        Map<String, Integer> frequencies = new HashMap<>();
+        for (Reservation reservation : reservationRepository.getAll()) {
+            String filmId = reservation.getIdFilm();
+            if (frequencies.containsKey(filmId))
+                frequencies.put(filmId, frequencies.get(filmId) + 1);
+            else
+                frequencies.put(filmId, 1);
+        }
+
+        List<FilmReservationVM> results = new ArrayList<>();
+        for (String filmId : frequencies.keySet()) {
+            Film film = filmRepository.findById(filmId);
+            results.add(new FilmReservationVM(film, frequencies.get(filmId)));
+        }
+        results.sort((f1, f2) -> f2.reservations - f1. reservations);
         return results;
     }
 

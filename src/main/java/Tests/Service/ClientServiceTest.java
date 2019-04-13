@@ -29,7 +29,7 @@ public class ClientServiceTest {
         clientService.addClient("1","Robert","Bura","1910909126212", LocalDate.of(1991,9,9), LocalDate.of(2013,10,14),43);
         clientService.updateClient("1","Robert","Bura","1910909126212", LocalDate.of(1991,9,9), LocalDate.of(2018,4,10),43);
 
-        assertEquals("10.04.2018", clientService.getAllClients().get(0).getRegistrationDay());
+        assertEquals(LocalDate.of(2018,4,10), clientService.getAllClients().get(0).getRegistrationDay());
     }
 
     @Test

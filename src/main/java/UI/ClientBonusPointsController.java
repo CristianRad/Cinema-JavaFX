@@ -37,7 +37,7 @@ public class ClientBonusPointsController {
     public Button btnUndo;
     public Button btnRedo;
 
-    public ClientService clientService;
+    private ClientService clientService;
 
     private ObservableList<Client> clients = FXCollections.observableArrayList();
 

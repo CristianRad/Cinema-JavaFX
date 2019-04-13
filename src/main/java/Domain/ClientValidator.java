@@ -12,6 +12,17 @@ public class ClientValidator implements IValidator<Client> {
     public void validate(Client client) {
         String errors = "";
 
+        /*int id = Integer.parseInt(client.getId());
+        int dumy = id;
+        int reversedId = 0;
+        while (dumy != 0) {
+            reversedId = reversedId * 10 + dumy % 10;
+            dumy /= 10;
+        }
+
+        if (id != reversedId)
+            errors += "The ID is not palindrome!\n";*/
+
         if (client.getCnp().length() != 13)
             throw new ClientValidatorException("The CNP must have exactly 13 digits!\n");
 

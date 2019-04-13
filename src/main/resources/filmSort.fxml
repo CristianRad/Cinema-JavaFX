@@ -21,7 +21,7 @@
       </HBox>
       <HBox alignment="TOP_CENTER" prefHeight="434.0" prefWidth="460.0">
          <children>
-            <TableView fx:id="tblFilms" prefHeight="434.0" prefWidth="460.0">
+            <TableView fx:id="tblFilms" editable="true" prefHeight="434.0" prefWidth="460.0">
               <columns>
                 <TableColumn fx:id="colFilmId" prefWidth="33.0" style="-fx-alignment: CENTER;" text="ID">
                     <cellValueFactory>
@@ -40,7 +40,7 @@
                 </TableColumn>
                 <TableColumn fx:id="colFilmPrice" prefWidth="76.0" style="-fx-alignment: CENTER;" text="Ticket Price">
                     <cellValueFactory>
-                        <PropertyValueFactory property="ticketPrice" />
+                        <PropertyValueFactory property="price" />
                     </cellValueFactory>
                 </TableColumn>
                 <TableColumn fx:id="colFilmOnScreen" minWidth="0.0" prefWidth="68.0" style="-fx-alignment: CENTER;" text="On Screen">
@@ -50,7 +50,7 @@
                 </TableColumn>
                 <TableColumn fx:id="colFilmReservations" prefWidth="81.0" style="-fx-alignment: CENTER;" text="Reservations">
                     <cellValueFactory>
-                        <PropertyValueFactory property="reserved" />
+                        <PropertyValueFactory property="reservations" />
                     </cellValueFactory>
                 </TableColumn>
               </columns>

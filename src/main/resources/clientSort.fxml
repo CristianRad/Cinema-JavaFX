@@ -19,9 +19,9 @@
             </Label>
          </children>
       </HBox>
-      <HBox alignment="TOP_CENTER" prefHeight="440.0" prefWidth="650.0">
+      <HBox alignment="TOP_CENTER" prefHeight="434.0" prefWidth="650.0">
           <children>
-              <TableView fx:id="tblClients" editable="true" prefHeight="410.0" prefWidth="650.0">
+              <TableView fx:id="tblClients" editable="true" prefHeight="434.0" prefWidth="650.0">
                   <columns>
                       <TableColumn fx:id="colClientId" prefWidth="50.0" style="-fx-alignment: CENTER;" text="ID">
                           <cellValueFactory>

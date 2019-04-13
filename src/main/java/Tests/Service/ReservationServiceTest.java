@@ -43,7 +43,7 @@ public class ReservationServiceTest {
         reservationService.addReservation("1","1","1", LocalDate.of(2017,12,22), LocalTime.of(19,45));
         reservationService.updateReservation("1","1","1", LocalDate.of(2017,12,22), LocalTime.of(21,0));
 
-        assertEquals("21:00", reservationService.getAllReservations().get(0).getTime());
+        assertEquals(LocalTime.of(21,0), reservationService.getAllReservations().get(0).getTime());
     }
 
     @Test

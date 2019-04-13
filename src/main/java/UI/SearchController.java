@@ -67,17 +67,14 @@ public class SearchController {
             films.clear();
             films.addAll(filmResults);
             tblFilms.setItems(films);
-            tblFilms.refresh();
 
             clients.clear();
             clients.addAll(clientResults);
             tblClients.setItems(clients);
-            tblClients.refresh();
 
             reservations.clear();
             reservations.addAll(reservationResults);
             tblReservations.setItems(reservations);
-            tblReservations.refresh();
         } catch (RuntimeException error) {
             Common.showValidationError(error.getMessage());
         }

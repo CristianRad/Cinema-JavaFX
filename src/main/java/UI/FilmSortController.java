@@ -1,6 +1,6 @@
 package UI;
 
-import Domain.Film;
+import Service.FilmReservationVM;
 import Service.FilmService;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -9,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
-import java.util.Comparator;
 import java.util.List;
 
 public class FilmSortController {
@@ -22,9 +21,9 @@ public class FilmSortController {
     public TableColumn colFilmOnScreen;
     public TableColumn colFilmReservations;
 
-    public FilmService filmService;
+    private FilmService filmService;
 
-    private ObservableList<Film> films = FXCollections.observableArrayList();
+    private ObservableList<FilmReservationVM> films = FXCollections.observableArrayList();
 
     public void setService(FilmService filmService) {
         this.filmService = filmService;
@@ -34,8 +33,7 @@ public class FilmSortController {
     private void initialize() {
         Platform.runLater(() -> {
             try {
-                List<Film> sortedFilms = filmService.getAllFilms();
-                sortedFilms.sort(Comparator.comparing(Film::getReserved).reversed());
+                List<FilmReservationVM> sortedFilms = filmService.getOrderedByReservations();
 
                 films.addAll(sortedFilms);
                 tblFilms.setItems(films);

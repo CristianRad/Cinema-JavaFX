@@ -1,8 +1,6 @@
 package Tests.Domain;
 
-import Domain.Film;
-import Domain.FilmValidator;
-import Domain.IValidator;
+import Domain.*;
 import Repository.IRepository;
 import Repository.InMemoryRepository;
 import Service.FilmService;
@@ -15,7 +13,11 @@ public class FilmTest {
 
     private IValidator<Film> filmValidator = new FilmValidator();
     private IRepository<Film> filmRepository = new InMemoryRepository<>(filmValidator);
-    private FilmService filmService = new FilmService(filmRepository);
+
+    private IValidator<Reservation> reservationValidator = new ReservationValidator();
+    private IRepository<Reservation> reservationRepository = new InMemoryRepository<>(reservationValidator);
+
+    private FilmService filmService = new FilmService(filmRepository, reservationRepository);
 
     @Test
     public void setTitleYearPriceOnScreen() {

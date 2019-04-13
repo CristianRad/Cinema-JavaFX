@@ -22,15 +22,15 @@
             <Label text="Time Interval - Between" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="105.0">
                <children>
-                  <TextField fx:id="txtStartHour" prefHeight="25.0" prefWidth="50.0" promptText="Hour" />
-                  <TextField fx:id="txtStartMinutes" prefHeight="25.0" prefWidth="60.0" promptText="Minutes" />
+                  <TextField fx:id="txtStartHour" alignment="CENTER" prefHeight="25.0" prefWidth="50.0" promptText="Hour" />
+                  <TextField fx:id="txtStartMinutes" alignment="CENTER" prefHeight="25.0" prefWidth="60.0" promptText="Minutes" />
                </children>
             </HBox>
             <Label text="and" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="105.0">
                <children>
-                  <TextField fx:id="txtEndHour" prefHeight="25.0" prefWidth="50.0" promptText="Hour" />
-                  <TextField fx:id="txtEndMinutes" prefHeight="25.0" prefWidth="60.0" promptText="Minutes" />
+                  <TextField fx:id="txtEndHour" alignment="CENTER" prefHeight="25.0" prefWidth="50.0" promptText="Hour" />
+                  <TextField fx:id="txtEndMinutes" alignment="CENTER" prefHeight="25.0" prefWidth="60.0" promptText="Minutes" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="161.0" spacing="3.0">

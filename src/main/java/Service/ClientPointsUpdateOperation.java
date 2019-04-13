@@ -10,7 +10,7 @@ public class ClientPointsUpdateOperation<T extends Entity> extends UndoRedoOpera
     private List<T> currentCards;
     private List<T> updatedCards;
 
-    public ClientPointsUpdateOperation(IRepository repository, List<T> currentCards, List<T> updatedCards) {
+    public ClientPointsUpdateOperation(IRepository<T> repository, List<T> currentCards, List<T> updatedCards) {
         super(repository);
         this.currentCards = currentCards;
         this.updatedCards = updatedCards;

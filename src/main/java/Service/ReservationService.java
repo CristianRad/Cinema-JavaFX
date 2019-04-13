@@ -56,8 +56,6 @@ public class ReservationService {
         undoableOperations.add(new AddOperation<>(reservationRepository, reservation));
         redoableOperations.clear();
 
-        filmRepository.findById(idFilm).setReserved(filmRepository.findById(idFilm).getReserved() + 1);
-
         Client cardClient = clientRepository.findById(idCardClient);
         if (cardClient != null)
             cardClient.setPoints(cardClient.getPoints() + (int)bookedFilm.getTicketPrice() / 10);
