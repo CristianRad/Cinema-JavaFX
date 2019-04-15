@@ -1,5 +1,6 @@
 package UI;
 
+import Domain.PalindromeValidator;
 import Service.FilmService;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
@@ -33,8 +34,13 @@ public class FilmAddController {
             double price = Double.parseDouble(txtPrice.getText());
             boolean onScreen = chkOnScreen.isSelected();
 
-            filmService.addFilm(id, title, year, price, onScreen);
-            btnCancelClick(actionEvent);
+            try {
+                PalindromeValidator.validate(id);
+                filmService.addFilm(id, title, year, price, onScreen);
+                btnCancelClick(actionEvent);
+            } catch (RuntimeException error) {
+                Common.showValidationError(error.getMessage());
+            }
         } catch (RuntimeException error) {
             Common.showValidationError(error.getMessage());
         }

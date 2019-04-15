@@ -3,24 +3,34 @@ package Domain;
 public class PalindromeValidator {
 
     /**
-     * Verifies if a number is palindrome.
-     * @param id is the ID of the entity to validate.
-     * @return true if the number is palindrome and false otherwise.
+     * Finds the palindrome of a given number.
+     * @param number is the number whose palindrome needs to be found.
      */
 
-    public static boolean isPalindrome(String id) {
-        int number = Integer.parseInt(id);
+    public static int getPalindrome(int number) {
         int dumy = number;
         int reversedNumber = 0;
-
         while (dumy != 0) {
             reversedNumber = reversedNumber * 10 + dumy % 10;
             dumy = dumy / 10;
         }
+        return reversedNumber;
+    }
 
-        if (number == reversedNumber)
-            return true;
-        return false;
+    /**
+     * Validates an ID.
+     * @param id is the ID to validate.
+     * @throws PalindromeValidatorException if there are validation errors.
+     */
+
+    public static void validate(String id) {
+        String errors = "";
+
+        if (Integer.parseInt(id) != getPalindrome(Integer.parseInt(id)))
+            errors += String.format("The ID (%s) is not palindrome!", id);
+
+        if (!errors.isEmpty())
+            throw new PalindromeValidatorException("\n" + errors);
     }
 
 }

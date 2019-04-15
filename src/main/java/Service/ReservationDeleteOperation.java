@@ -9,7 +9,7 @@ public class ReservationDeleteOperation<T extends Entity> extends UndoRedoOperat
 
     private List<T> removedEntities;
 
-    public ReservationDeleteOperation(IRepository repository, List<T> removedEntities) {
+    public ReservationDeleteOperation(IRepository<T> repository, List<T> removedEntities) {
         super(repository);
         this.removedEntities = removedEntities;
     }

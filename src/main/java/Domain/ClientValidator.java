@@ -2,8 +2,6 @@ package Domain;
 
 import java.util.Calendar;
 
-import static Domain.PalindromeValidator.isPalindrome;
-
 public class ClientValidator implements IValidator<Client> {
 
     /** Validates a reservation.
@@ -13,9 +11,6 @@ public class ClientValidator implements IValidator<Client> {
 
     public void validate(Client client) {
         String errors = "";
-
-        if (isPalindrome(client.getId()))
-            errors += String.format("The client's ID (%s) is a palindrome number!\n", client.getId());
 
         if (client.getCnp().length() != 13)
             errors += "The CNP must be exactly 13 digits!\n";

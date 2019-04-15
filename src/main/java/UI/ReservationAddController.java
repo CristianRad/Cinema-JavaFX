@@ -1,5 +1,6 @@
 package UI;
 
+import Domain.PalindromeValidator;
 import Service.ReservationService;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
@@ -45,8 +46,13 @@ public class ReservationAddController {
             int minutes = Integer.parseInt(txtMinutes.getText());
             LocalTime timeOfReservation = LocalTime.of(hour, minutes);
 
-            reservationService.addReservation(id, idFilm, idCardClient, dateOfReservation, timeOfReservation);
-            btnCancelClick(actionEvent);
+            try {
+                PalindromeValidator.validate(id);
+                reservationService.addReservation(id, idFilm, idCardClient, dateOfReservation, timeOfReservation);
+                btnCancelClick(actionEvent);
+            } catch (RuntimeException error) {
+                Common.showValidationError(error.getMessage());
+            }
         } catch (RuntimeException error) {
             Common.showValidationError(error.getMessage());
         }

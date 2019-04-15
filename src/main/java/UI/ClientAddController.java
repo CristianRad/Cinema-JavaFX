@@ -1,5 +1,6 @@
 package UI;
 
+import Domain.PalindromeValidator;
 import Service.ClientService;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
@@ -51,8 +52,13 @@ public class ClientAddController {
 
             int points = Integer.parseInt(txtPoints.getText());
 
-            clientService.addClient(id, name, surname, cnp, birthday, registrationDay, points);
-            btnCancelClick(actionEvent);
+            try {
+                PalindromeValidator.validate(id);
+                clientService.addClient(id, name, surname, cnp, birthday, registrationDay, points);
+                btnCancelClick(actionEvent);
+            } catch (RuntimeException error) {
+                Common.showValidationError(error.getMessage());
+            }
         } catch (RuntimeException error) {
             Common.showValidationError(error.getMessage());
         }
